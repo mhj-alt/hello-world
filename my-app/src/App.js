@@ -3,7 +3,7 @@ import './App.css';
 
 async function whenClick() {
   try {
-    const response = await fetch('http://localhost:8080/ping', {
+    const response = await fetch('http://localhost:8082/ping', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
