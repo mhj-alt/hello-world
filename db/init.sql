@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS ping_counter (
+    id SERIAL PRIMARY KEY,
+    count INTEGER NOT NULL DEFAULT 0
+);
+
+INSERT INTO ping_counter (count) 
+SELECT 0 
+WHERE NOT EXISTS (SELECT 1 FROM ping_counter);
+

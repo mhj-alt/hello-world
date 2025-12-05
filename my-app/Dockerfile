@@ -9,4 +9,6 @@ RUN npm install
 
 COPY . .
 
+
+# localhost : 3000
 CMD ["npm", "start"]
