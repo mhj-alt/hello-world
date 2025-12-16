@@ -1,0 +1,32 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: c1
+servers: 1
+agents: 1
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 4430:443
+    nodeFilters:
+      - loadbalancer
+registries:
+  create:
+    name: registry
+    hostPort: "15444"
+  config: |
+    mirrors:
+      "registry:15444":
+        endpoint:
+          - http://registry:5000 
+      "localhost:15444":
+        endpoint:
+          - http://registry:5000
+options:
+  k3d:
+    wait: true
+    timeout: "120s"
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true

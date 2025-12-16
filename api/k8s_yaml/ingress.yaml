@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /ping
+            pathType: Exact
+            backend:
+              service:
+                name: api
+                port:
+                  number: 8080
